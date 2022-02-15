@@ -3,7 +3,6 @@
 #include <cstring>
 
 #include "BUILD/NUCLEO_F446RE/ARMC6/mbed_config.h"
-#include "cmsis_iccarm.h"
 #include "fhss_api.h"
 #include "mbedtls/sha256.h"
 #include "mbedtls/aes.h"
@@ -21,10 +20,9 @@ class Security{
         mbedtls_sha256_init(&AesKey);
         mbedtls_sha256_starts(&AesKey, 0);
         mbedtls_aes_init(&Ac);
-        this->rout = 1;
     }
 
-    uint32_t Read(uint32_t value)
+    uint32_t Read(const int32_t value)
     {
         // SHA256에 넣을 값들을 buffer에 삽입.
         for(int i =0; i < 32 ; i++)
@@ -49,13 +47,21 @@ class Security{
 
         // uint32 -> unsigned char로 변경하는 것으로 작성.
         // 4byte to unsigned char 4개에 변경로직 작성이 필요.
+        // 128bit로 만들기위해 해당 배열은 미리 초기화를 진행.
+        char data[16] = {0,};
+        char odata[16] = {0,};
+        data[3] = value>>24;
+        data[2] = value>>16;
+        data[1] = value>>8;
+        data[0] = value;
+
+        //mbedtls_aes_crypt_ctr(&Ac, 128, nc , IV, sb,data, odata);
+
         
-        mbedtls_aes_crypt_cfb128(&Ac, MBEDTLS_AES_ENCRYPT, 32, IV, , );
         return Ci;
     }
 
     private:
-    int rout;
     unsigned char buffer[32];
     unsigned char Aesk[32];
     uint8_t nwkskey[16] = MBED_CONF_LORA_NWKSKEY;

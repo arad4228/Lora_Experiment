@@ -152,11 +152,11 @@ static void send_message()
 {
     uint16_t packet_len;
     int16_t retcode;
-    int32_t sensor_value;
+    int32_t sensor_value[4] = {0,};
 
     if (ds1820.begin()) {
         ds1820.startConversion();
-        sensor_value = ds1820.read();
+        sensor_value[0] = ds1820.read();
         printf("\r\n Dummy Sensor Value = %d \r\n", sensor_value);
         ds1820.startConversion();
     } else {
