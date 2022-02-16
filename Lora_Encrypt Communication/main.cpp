@@ -158,14 +158,14 @@ static void send_message()
     if (ds1820.begin()) {
         ds1820.startConversion();
         ds1820.read(sensor_value);
-        printf("\r\n Encrypt Value is %s \r\n", sensor_value);
+        //printf("\r\n Encrypt Value is %s \r\n", sensor_value);
         ds1820.startConversion();
     } else {
         printf("\r\n No sensor found \r\n");
         return;
     }
     //lora에 전달할 tx값을 쓰는 과정과 그의 길이를 전닳한다.
-    packet_len = sprintf((char *) tx_buffer, "Encrypt Value is %s\n",
+    packet_len = sprintf((char *) tx_buffer, "Encrypt Value is %s",
                          (char*)sensor_value);
 
     retcode = lorawan.send(MBED_CONF_LORA_APP_PORT, tx_buffer, packet_len,

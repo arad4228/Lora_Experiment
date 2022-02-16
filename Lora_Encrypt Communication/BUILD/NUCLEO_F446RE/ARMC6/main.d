@@ -116,7 +116,10 @@ BUILD/NUCLEO_F446RE/ARMC6/main.o: main.cpp \
   mbed-os/rtos/Mutex.h mbed-os/rtos/mbed_rtos_types.h \
   mbed-os/rtos/mbed_rtos1_types.h \
   mbed-os/rtos/source/TARGET_CORTEX/rtx4/cmsis_os.h DummySensor.h \
-  EncryptLogic.h \
+  EncryptLogic.h mbed-os/drivers/internal/AsyncOp.h \
+  mbed-os/rtos/Semaphore.h mbed-os/drivers/internal/LinkEntry.h \
+  mbed-os/drivers/internal/OperationListBase.h \
+  mbed-os/drivers/internal/LinkedListBase.h \
   mbed-os/features/mbedtls/mbed-crypto/inc/mbedtls/sha256.h \
   trace_helper.h lora_radio_helper.h \
   mbed-lora-radio-drv/SX1272/SX1272_LoRaRadio.h \
@@ -139,8 +142,7 @@ BUILD/NUCLEO_F446RE/ARMC6/main.o: main.cpp \
   mbed-os/platform/SingletonPtr.h mbed-os/platform/CThunk.h \
   mbed-os/platform/internal/CThunkBase.h \
   mbed-os/platform/CircularBuffer.h mbed-os/platform/Transaction.h \
-  mbed-os/rtos/Thread.h mbed-os/rtos/Semaphore.h \
-  mbed-os/drivers/LowPowerTimeout.h mbed-os/hal/lp_ticker_api.h \
-  mbed-os/hal/ticker_api.h mbed-os/drivers/LowPowerTicker.h \
-  mbed-os/drivers/Ticker.h mbed-os/platform/cxxsupport/mstd_utility \
-  mbed-os/drivers/TimerEvent.h
+  mbed-os/rtos/Thread.h mbed-os/drivers/LowPowerTimeout.h \
+  mbed-os/hal/lp_ticker_api.h mbed-os/hal/ticker_api.h \
+  mbed-os/drivers/LowPowerTicker.h mbed-os/drivers/Ticker.h \
+  mbed-os/platform/cxxsupport/mstd_utility mbed-os/drivers/TimerEvent.h

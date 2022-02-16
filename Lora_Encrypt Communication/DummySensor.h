@@ -43,7 +43,7 @@ public:
         //mt19937 prng(rd());
         //uniform_int_distribution<> Sensor(-50, 50);
         //value = Sensor(prng);
-        value = value+1;
+        value = value + 1;
         printf("Value is %d\n", value);
         Sc.Read(value,Data);
         for(int i = 0; i < 16; i++)
